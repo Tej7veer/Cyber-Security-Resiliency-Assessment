@@ -7,9 +7,9 @@ import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,BrowserModule, CommonModule, ReactiveFormsModule ],
+  imports: [RouterOutlet, CommonModule, ReactiveFormsModule ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'Cyber';
@@ -74,7 +74,7 @@ export class AppComponent {
       console.log(this.dynamicForm.value);
     this.submitting = true;  
 
-this.http.post('https://localhost:7047/v1/submit-form', FormData).subscribe({
+this.http.post('https://localhost:7047/v1/submit-form', this.dynamicForm.value).subscribe({
       next: (response) => {
         console.log('Form submitted successfully:', response);
         alert('Form submitted successfully!');
